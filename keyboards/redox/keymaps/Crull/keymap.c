@@ -38,6 +38,7 @@ enum custom_keycodes {
 #define ADJ_RBC LT(_ADJUST, KC_RBRC)
 #define ADJ_BSL LT(_ADJUST, KC_BSLS)
 #define NUM_BSP LT(_NUM, KC_BSPC)
+#define ADJ_ENT LT(_ADJUST, KC_ENT) //Enter and settings when held
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -51,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
 	TAP_CTL  , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , xxxxxxx, xxxxxxx        , xxxxxxx, xxxxxxx, KC_N   , KC_M   , KC_COMM, KC_DOT ,KC_SCLN ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-	KC_LGUI  ,xxxxxxx ,xxxxxxx , xxxxxxx     , ALT_HOM    , NUM_BSP, NAV_DEL        , KC_ENT , KC_SPC     , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+	KC_LGUI  ,xxxxxxx ,xxxxxxx , xxxxxxx     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , KC_SPC     , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
 
