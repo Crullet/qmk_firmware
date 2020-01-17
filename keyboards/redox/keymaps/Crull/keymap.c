@@ -44,15 +44,15 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	KC_GESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5                                               , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , xxxxxxx,
+	KC_GESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5                                               , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	KC_TAB   , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,xxxxxxx                           , KC_QUOT, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_AA  ,
+	KC_TAB   , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , XXXXXXX                           , KC_QUOT, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , SE_AA  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
 	TAP_SFT  , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   , KC_LBRC                          , KC_RBRC, KC_H   , KC_J   , KC_K   , KC_L   , SE_AE  , SE_OE  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	TAP_CTL  , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , xxxxxxx, xxxxxxx        , xxxxxxx, xxxxxxx, KC_N   , KC_M   , KC_COMM, KC_DOT ,KC_SCLN ,KC_MINS ,
+	TAP_CTL  , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , XXXXXXX, XXXXXXX        , XXXXXXX, XXXXXXX, KC_N   , KC_M   , KC_COMM, KC_DOT ,KC_SLSH ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-	KC_LGUI  ,xxxxxxx ,xxxxxxx , xxxxxxx     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , KC_SPC     , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+	KC_LGUI  ,XXXXXXX ,XXXXXXX , XXXXXXX     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , KC_SPC     , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
 
@@ -72,43 +72,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_NAV] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	xxxxxxx  , xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx                                            , xxxxxxx, KC_BTN3, KC_BTN4, KC_BTN5, xxxxxxx, KC_ACL0,
+	XXXXXXX  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX                                            , XXXXXXX, KC_BTN3, KC_BTN4, KC_BTN5, XXXXXXX, KC_ACL0,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx , xxxxxxx, KC_UP, xxxxxxx, xxxxxxx , xxxxxxx                          , xxxxxxx,KC_WH_U , KC_WH_L, KC_MS_U, KC_WH_R,xxxxxxx  ,KC_ACL1 ,
+    XXXXXXX  ,XXXXXXX , XXXXXXX, KC_UP, XXXXXXX, XXXXXXX , XXXXXXX                          , XXXXXXX,KC_WH_U , KC_WH_L, KC_MS_U, KC_WH_R,XXXXXXX  ,KC_ACL1 ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx , KC_LEFT, KC_DOWN, KC_RGHT, xxxxxxx, xxxxxxx                          , xxxxxxx,KC_WH_D , KC_MS_L, KC_MS_D, KC_MS_R,xxxxxxx ,KC_ACL2 ,
+    XXXXXXX  ,XXXXXXX , KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX                          , XXXXXXX,KC_WH_D , KC_MS_L, KC_MS_D, KC_MS_R,XXXXXXX ,KC_ACL2 ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx , xxxxxxx, xxxxxxx, xxxxxxx, xxxxxxx, _______, _______        , _______, _______,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,
+    XXXXXXX  ,XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______        , _______, _______,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx ,xxxxxxx ,xxxxxxx      , _______    , _______, _______        , KC_BTN1, KC_BTN2    , _______     , _______,xxxxxxx ,xxxxxxx ,xxxxxxx
+    XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      , _______    , _______, _______        , KC_BTN1, KC_BTN2    , _______     , _______,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
 
 	[_ADJUST] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-  	RESET    ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx                                             ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,
+  	RESET    ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx ,xxxxxxx ,RGB_TOG ,xxxxxxx ,xxxxxxx ,xxxxxxx                           ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx  xxxxxxx ,xxxxxxx ,
+    XXXXXXX  ,XXXXXXX ,XXXXXXX ,RGB_TOG ,XXXXXXX ,XXXXXXX ,XXXXXXX                           ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX , XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,RGB_MOD ,RGB_HUI ,RGB_SAI ,RGB_VAI ,xxxxxxx ,xxxxxxx                           ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,
+    XXXXXXX  ,RGB_MOD ,RGB_HUI ,RGB_SAI ,RGB_VAI ,XXXXXXX ,XXXXXXX                           ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,RGB_RMOD ,RGB_HUD ,RGB_SAD ,RGB_VAD ,xxxxxxx ,xxxxxxx ,xxxxxxx         ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,
+    XXXXXXX  ,RGB_RMOD ,RGB_HUD ,RGB_SAD ,RGB_VAD ,XXXXXXX ,XXXXXXX ,XXXXXXX         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    xxxxxxx  ,xxxxxxx ,xxxxxxx ,xxxxxxx      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx
+    XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
 
 	[_NUM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    _______  , _______, _______, _______, _______, _______                                            ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,xxxxxxx ,KC_NLCK	,
+    _______  , _______, _______, _______, _______, _______                                            ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_NLCK	,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    _______  , _______, _______, _______, _______, _______, _______                          , _______,xxxxxxx , KC_P7  , KC_P8  , KC_P9  ,KC_PPLS ,KC_PMNS  ,
+    _______  , _______, _______, _______, _______, _______, _______                          , _______,XXXXXXX , KC_P7  , KC_P8  , KC_P9  ,KC_PPLS ,KC_PMNS  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  , _______, _______, _______, _______, _______, _______                          , _______,xxxxxxx , KC_P4  , KC_P5  , KC_P6  ,KC_PAST ,KC_PSLS  ,
+	_______  , _______, _______, _______, _______, _______, _______                          , _______,XXXXXXX , KC_P4  , KC_P5  , KC_P6  ,KC_PAST ,KC_PSLS  ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  , _______, _______, _______, _______, _______, _______, _______        , _______, _______,xxxxxxx , KC_P1  , KC_P2  , KC_P3  ,xxxxxxx ,KC_PEQL  ,
+	_______  , _______, _______, _______, _______, _______, _______, _______        , _______, _______,XXXXXXX , KC_P1  , KC_P2  , KC_P3  ,XXXXXXX ,KC_PEQL  ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    _______  , _______, _______, _______     , _______    , _______, _______        , _______, _______    , _______     , KC_P0  , KC_PDOT,xxxxxxx ,xxxxxxx
+    _______  , _______, _______, _______     , _______    , _______, _______        , _______, _______    , _______     , KC_P0  , KC_PDOT,XXXXXXX ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
   };
