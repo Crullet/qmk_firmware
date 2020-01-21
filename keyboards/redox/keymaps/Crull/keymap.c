@@ -53,11 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
 	TAP_CTL  , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , XXXXXXX, XXXXXXX        , XXXXXXX, XXXXXXX, KC_N   , KC_M   , KC_COMM, KC_DOT ,KC_SLSH ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-<<<<<<< HEAD
 	KC_LGUI  ,XXXXXXX ,XXXXXXX , XXXXXXX     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , KC_SPC     , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
-=======
-	KC_LGUI  ,xxxxxxx ,xxxxxxx , xxxxxxx     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , SYM_SPC    , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
->>>>>>> 8a38e0e68ff0e6a90a9522d55eed497245e52128
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
 
