@@ -23,6 +23,9 @@ enum custom_keycodes {
 
 #define ALT_HOM LALT_T(KC_HOME)
 
+#define SFT_HOM LSFT(KC_HOME)
+#define SFT_HOM LSFT(KC_HOME)
+
 #define TAP_SFT OSM(MOD_LSFT)
 #define TAP_CTL OSM(MOD_LCTL)
 
@@ -32,14 +35,17 @@ enum custom_keycodes {
 #define SE_OE	RALT(KC_Q)
 
 // Navigation specific keys
-#define SYM_END LT(_SYMB, KC_END)
-#define SYM_SPC LT(_SYMB, KC_SPC)
-#define NAV_LBR LT(_NAV, KC_LBRC)
-#define NAV_DEL LT(_NAV,KC_DEL)
 #define ADJ_RBC LT(_ADJUST, KC_RBRC)
 #define ADJ_BSL LT(_ADJUST, KC_BSLS)
-#define NUM_BSP LT(_NUM, KC_BSPC)
 #define ADJ_ENT LT(_ADJUST, KC_ENT) //Enter and settings when held
+
+#define SYM_END LT(_SYMB, KC_END)
+#define SYM_SPC LT(_SYMB, KC_SPC)
+
+#define NAV_LBR LT(_NAV, KC_LBRC)
+#define NAV_DEL LT(_NAV,KC_DEL)
+
+#define NUM_BSP LT(_NUM, KC_BSPC)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -53,10 +59,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
 	KC_LCTL  , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_VOLU, KC_VOLD        , KC_MPLY, KC_CALC, KC_N   , KC_M   , KC_COMM, KC_DOT ,KC_SLSH ,KC_MINS ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-	KC_LGUI  ,XXXXXXX ,XXXXXXX , XXXXXXX     , ALT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , SYM_SPC    , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+	KC_LGUI  ,XXXXXXX ,XXXXXXX , KC_LALT     , SFT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , SYM_SPC    , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
-
+3
 	[_SYMB] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
     _______  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5                                              , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,KC_F11	,
