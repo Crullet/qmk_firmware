@@ -24,7 +24,7 @@ enum custom_keycodes {
 #define ALT_HOM LALT_T(KC_HOME)
 
 #define SFT_HOM LSFT(KC_HOME)
-#define SFT_HOM LSFT(KC_HOME)
+#define SFT_END RSFT(KC_END)
 
 #define TAP_SFT OSM(MOD_LSFT)
 #define TAP_CTL OSM(MOD_LCTL)
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_LGUI  ,XXXXXXX ,XXXXXXX , KC_LALT     , SFT_HOM    , NUM_BSP, NAV_DEL        ,ADJ_ENT , SYM_SPC    , SYM_END     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 	),
-3
+
 	[_SYMB] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
     _______  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5                                              , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,KC_F11	,
