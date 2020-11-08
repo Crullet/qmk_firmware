@@ -40,6 +40,10 @@ enum planck_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
+// Layer Navigation specific keys
+#define LOW_BSP LT(_LOWER, KC_BSPC)
+#define RSE_DEL LT(_RAISE, KC_DEL)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
