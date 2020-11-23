@@ -55,14 +55,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  -   |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite|      | Alt  | GUI  | BS(L)|    Space    |Del(R)| Left | Down |  Up  |Right |
+ * | Brite| Esc  | Alt  | GUI  | BS(L)|    Space    |Del(R)| Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SE_ARNG,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    SE_ODIA, SE_ADIA,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  SE_MINS, KC_ENT ,
-    BACKLIT, xxxxxxx, KC_LALT, KC_LGUI, LOW_BSP,KC_SPC,  KC_SPC,  RSE_DEL,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    BACKLIT, KC_ESC,  KC_LALT, KC_LGUI, LOW_BSP, KC_SPC,  KC_SPC,  RSE_DEL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -136,6 +136,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
+/* Movement
+   v-----------Cursor CONTROL----------------v--------------Mouse CONTROL--------------v
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      | WrdL |  Up  | WrdR |      | ScrUp| L-Clk|  Up  | R-Clk|      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      | Left | Down | Right|      | ScrDn| Left | Down | Right|      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
 
 /* Plover layer (http://opensteno.org)
  * ,-----------------------------------------------------------------------------------.
