@@ -1,25 +1,13 @@
-/*
-Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) 2020 Max Drasbeck 
- *
- * You are free to:
- *
- *  Share — copy and redistribute the material in any medium or format
- *  Adapt — remix, transform, and build upon the material
- *   for any purpose, even commercially.
- *
- * The licensor cannot revoke these freedoms as long as you follow the license terms.
-*/
-
 #pragma once
 
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)
     // #define STARTUP_SONG SONG(NO_SOUND)
 
-    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND) }//,
-                                 //  SONG(COLEMAK_SOUND),
-                                 //  SONG(DVORAK_SOUND)
-                                //}
+    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
+                                  SONG(COLEMAK_SOUND), \
+                                  SONG(DVORAK_SOUND) \
+                                }
 #endif
 
 #define MUSIC_MASK (keycode != KC_NO)
@@ -47,3 +35,11 @@ Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) 2020 Max Drasbeck
 
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
+
+#define ENCODER_RESOLUTION 4
+#define ENCODERS_PAD_A { B12 }
+#define ENCODERS_PAD_B { B13 }
+
+#define AUTO_SHIFT_TIMEOUT 105
+#define NO_AUTO_SHIFT_SPECIAL
+#define TAPPING_TERM 140
