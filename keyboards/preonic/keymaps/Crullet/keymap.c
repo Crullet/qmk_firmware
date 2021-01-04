@@ -36,36 +36,6 @@ enum preonic_keycodes {
   BACKLIT
 };
 
-typedef struct {
-  bool is_press_action;
-  int state;
-} tap;
-
-enum {
-  SINGLE_TAP = 1,
-  SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
-  DOUBLE_HOLD = 4,
-  DOUBLE_SINGLE_TAP = 5, //send two single taps
-  TRIPLE_TAP = 6,
-  TRIPLE_HOLD = 7
-};
-
-//Tap dance enums
-enum {
-  L_BR = 0,
-  R_BR = 1,
-  SOME_OTHER_DANCE
-};
-
-int cur_dance (qk_tap_dance_state_t *state);
-
-//for the x tap dance. Put it here so it can be used in any keymap
-void L_finished (qk_tap_dance_state_t *state, void *user_data);
-void L_reset (qk_tap_dance_state_t *state, void *user_data);
-void R_finished (qk_tap_dance_state_t *state, void *user_data);
-void R_reset (qk_tap_dance_state_t *state, void *user_data);
-
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -80,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |   +  |
+ * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |Bspace|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |   Å  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -147,9 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |   *  |   4  |   5  |   6  |   /  |   *  |
+ * |      |      |      |      |      |      |   /  |   4  |   5  |   6  |   *  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |   +  |   1  |   2  |   3  |   -  |   +  |
+ * |      |      |      |      |      |      |   +  |   1  |   2  |   3  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |   0   |  ,  |   =  |      |
  * `-----------------------------------------------------------------------------------'
@@ -164,11 +134,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |      |   !  |   "  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |   ?  | US shift numrow
+ * |      |   !  |   "  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      | US shift numrow (on keycaps)
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |   @  |   £  |   $  |   €  |      |   {  |   [  |   ]  |   }  |   ^  | SWE AltGr numrow
+ * |      |   ?  |   @  |   £  |   $  |   €  |   ^  |   {  |   [  |   ]  |   }  |   \  | SWE AltGr numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   ?  | SWE shift numrow
+ * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   /  | SWE shift numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |   '  |   "  |   ;  |   :  |   _  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
