@@ -75,11 +75,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |  F12 |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
+ * |  F12 |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   (  |   )  |   =  |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   /  |      |
+ * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   /  |   \  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   4  |   5  |   6  |   *  |      |
+ * |      |      |      |      |      |      |      |   4  |   5  |   6  |   *  |   '  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   1  |   2  |   3  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -87,20 +87,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-    KC_F12  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,
-    _______ ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,KC_6    ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,_______ ,
-    _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_P4   ,KC_P5   ,KC_P6   ,KC_PAST ,_______ ,
-    _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,SE_EQL  ,
+    KC_F12  ,SE_EXLM ,SE_AT   ,SE_HASH ,SE_DLR  ,SE_PERC ,SE_CIRC ,SE_AMPR ,SE_LPRN ,SE_RPRN ,SE_EQL ,KC_DEL  ,
+    _______ ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,KC_6    ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,SE_BSLS ,
+    _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P4   ,KC_P5   ,KC_P6   ,KC_PAST ,SE_QUOT ,
+    _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,_______ ,
     KC_NLCK ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_P0   ,KC_PDOT ,KC_PPLS ,_______
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |      |   !  |   "  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      | US shift numrow (on keycaps)
+ * |      |   ?  |   "  |   £  |   ¤  |   €  |      |   {  |   [  |   ]  |   }  |  Del | Custom shift numrow (on keycaps)
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   ?  |   @  |   £  |   $  |   €  |   ^  |   {  |   [  |   ]  |   }  |   \  | SWE AltGr numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   /  | SWE shift numrow
+ * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   "  | SWE shift numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |   '  |   "  |   ;  |   :  |   _  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -108,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  KC_TILD, SE_EXLM, SE_AT,   SE_HASH, SE_DLR  ,SE_PERC ,SE_CIRC, SE_AMPR ,SE_ASTR ,SE_LPRN ,SE_RPRN ,SE_QUES,
+  KC_TILD, SE_QUES, SE_DQUO, SE_PND,  SE_CURR, SE_EURO, XXXXXXX, SE_LCBR, SE_LBRC, SE_RBRC ,SE_RCBR, KC_DEL,
   KC_GRV,  SE_QUES, SE_AT,   SE_PND,  SE_DLR,  SE_EURO, SE_CIRC, SE_LCBR, SE_LBRC, SE_RBRC, SE_RCBR, SE_BSLS,
-  KC_DEL,  SE_EXLM, SE_DQUO, SE_HASH, SE_CURR, SE_PERC, SE_AMPR, SE_SLSH, SE_LPRN, SE_RPRN, SE_EQL,  SE_SLSH,
+  KC_DEL,  SE_EXLM, SE_DQUO, SE_HASH, SE_CURR, SE_PERC, SE_AMPR, SE_SLSH, SE_LPRN, SE_RPRN, SE_EQL,  SE_DQUO,
   _______, _______, _______, _______, _______, _______, SE_QUOT, SE_DQUO, SE_SCLN, SE_COLN, SE_UNDS, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
