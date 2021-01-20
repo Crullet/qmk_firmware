@@ -39,6 +39,10 @@ enum preonic_keycodes {
   BACKLIT
 };
 
+
+// wait DELAY ms before unregistering media keys
+#define MEDIA_KEY_DELAY 10
+
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -70,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SE_ARNG,
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    SE_ODIA, SE_ADIA,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_SFTENT,
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOW_BSP, MOV_SPC, MOV_SPC, RSE_DEL, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
+  KC_MUTE, KC_LCTL, KC_LALT, KC_LGUI, LOW_BSP, MOV_SPC, MOV_SPC, RSE_DEL, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -228,6 +232,7 @@ uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
+    uint16_t held_keycode_timer = timer_read();
   if (muse_mode) {
     if (IS_LAYER_ON(_RAISE)) {
       if (clockwise) {
@@ -244,11 +249,17 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
   } else {
     if (clockwise) {
-      register_code(KC_PGDN);
-      unregister_code(KC_PGDN);
+      register_code(KC_VOLU);
+      while (timer_elapsed(held_keycode_timer) < MEDIA_KEY_DELAY) {
+      // no-op
+    }
+      unregister_code(KC_VOLU);
     } else {
-      register_code(KC_PGUP);
-      unregister_code(KC_PGUP);
+      register_code(KC_VOLD);
+      while (timer_elapsed(held_keycode_timer) < MEDIA_KEY_DELAY) {
+      // no-op
+    }
+      unregister_code(KC_VOLD);
     }
   }
 }
