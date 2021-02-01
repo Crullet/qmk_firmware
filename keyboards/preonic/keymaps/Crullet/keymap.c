@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    SE_ARNG,
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    SE_ODIA, SE_ADIA,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_SFTENT,
-  KC_MUTE, KC_LCTL, KC_LALT, KC_LGUI, LOW_BSP, MOV_SPC, MOV_SPC, RSE_DEL, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
+  KC_MUTE, SE_LABK, KC_LALT, KC_LGUI, LOW_BSP, KC_SPC,  KC_SPC,  RSE_DEL, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   4  |   5  |   6  |   *  |   '  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   1  |   2  |   3  |   -  |      |
+ * |      |      |      |      |      |      |   0  |   1  |   2  |   3  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Numlck|      |      |      |      |             |      |   0   |  ,  |   +  |      |
  * `-----------------------------------------------------------------------------------'
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F12  ,SE_EXLM ,SE_AT   ,SE_HASH ,SE_DLR  ,SE_PERC ,SE_CIRC ,SE_AMPR ,SE_LPRN ,SE_RPRN ,SE_EQL ,KC_DEL  ,
     _______ ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,KC_6    ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,SE_BSLS ,
     _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P4   ,KC_P5   ,KC_P6   ,KC_PAST ,SE_QUOT ,
-    _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,_______ ,
+    _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P0   ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,_______ ,
     KC_NLCK ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_P0   ,KC_PDOT ,KC_PPLS ,_______
 ),
 
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   "  | SWE shift numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |   '  |   "  |   ;  |   :  |   _  |      |
+ * |      |      |      |      |      |      |   '  |   "  |   <  |   >  |   _  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TILD, SE_QUES, SE_DQUO, SE_PND,  SE_CURR, SE_EURO, XXXXXXX, SE_LCBR, SE_LBRC, SE_RBRC ,SE_RCBR, KC_DEL,
   KC_GRV,  SE_QUES, SE_AT,   SE_PND,  SE_DLR,  SE_EURO, SE_CIRC, SE_LCBR, SE_LBRC, SE_RBRC, SE_RCBR, SE_BSLS,
   KC_DEL,  SE_EXLM, SE_DQUO, SE_HASH, SE_CURR, SE_PERC, SE_AMPR, SE_SLSH, SE_LPRN, SE_RPRN, SE_EQL,  SE_DQUO,
-  _______, _______, _______, _______, _______, _______, SE_QUOT, SE_DQUO, SE_SCLN, SE_COLN, SE_UNDS, _______,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SE_QUOT, SE_DQUO, SE_LABK, SE_RABK, SE_UNDS, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
@@ -154,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_preonic_grid(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,
@@ -183,6 +183,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             set_single_persistent_default_layer(_DVORAK);
           }
           return false;
+          break;
+        case LOWER:
+          if (record->event.pressed) {
+            layer_on(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          //return false; //removed to enable layer tap
+          break;
+        case RAISE:
+          if (record->event.pressed) {
+            layer_on(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          //return false; //removed to enable layer tap
           break;
         case LOW_BSP:
           if (record->event.pressed) {
