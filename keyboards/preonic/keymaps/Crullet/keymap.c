@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   !  |   "  |   #  |   ¤  |   %  |   &  |   /  |   (  |   )  |   =  |   "  | SWE shift numrow
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |   '  |   "  |   <  |   >  |   _  |      |
+ * |      |   §  |   ^  |   ¨  |   `  |   ´  |   '  |   "  |   <  |   >  |   _  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Home | PgDn | PgUp | End  |
  * `-----------------------------------------------------------------------------------'
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TILD, SE_QUES, SE_DQUO, SE_PND,  SE_CURR, SE_EURO, XXXXXXX, SE_LCBR, SE_LBRC, SE_RBRC ,SE_RCBR, KC_DEL,
   KC_GRV,  SE_QUES, SE_AT,   SE_PND,  SE_DLR,  SE_EURO, SE_CIRC, SE_LCBR, SE_LBRC, SE_RBRC, SE_RCBR, SE_BSLS,
   KC_DEL,  SE_EXLM, SE_DQUO, SE_HASH, SE_CURR, SE_PERC, SE_AMPR, SE_SLSH, SE_LPRN, SE_RPRN, SE_EQL,  SE_DQUO,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SE_QUOT, SE_DQUO, SE_LABK, SE_RABK, SE_UNDS, _______,
+  _______, SE_SECT, SE_CIRC, SE_DIAE, SE_GRV,  SE_ACUT, SE_QUOT, SE_DQUO, SE_LABK, SE_RABK, SE_UNDS, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
