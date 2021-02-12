@@ -79,11 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |  F12 |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   (  |   )  |   =  |  Del |
+ * |      |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   (  |   )  |   =  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   /  |   \  |
+ * |      |      | WrdL |  Up  | WrdR |      |      |   7  |   8  |   9  |   /  |   \  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   4  |   5  |   6  |   *  |   '  |
+ * |      |      | Left | Down | Right|      |      |   4  |   5  |   6  |   *  |   '  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |   0  |   1  |   2  |   3  |   -  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -91,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-    KC_F12  ,SE_EXLM ,SE_AT   ,SE_HASH ,SE_DLR  ,SE_PERC ,SE_CIRC ,SE_AMPR ,SE_LPRN ,SE_RPRN ,SE_EQL ,KC_DEL  ,
-    _______ ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,KC_6    ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,SE_BSLS ,
-    _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P4   ,KC_P5   ,KC_P6   ,KC_PAST ,SE_QUOT ,
+    _______ ,SE_EXLM ,SE_AT   ,SE_HASH ,SE_DLR  ,SE_PERC ,SE_CIRC ,SE_AMPR ,SE_LPRN ,SE_RPRN ,SE_EQL  ,_______ ,
+    _______ ,XXXXXXX ,JMP_LFT ,KC_UP   ,JMP_RGT ,XXXXXXX ,XXXXXXX ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,SE_BSLS ,
+    _______ ,XXXXXXX ,KC_LEFT ,KC_DOWN ,KC_RIGHT,XXXXXXX ,XXXXXXX ,KC_P4   ,KC_P5   ,KC_P6   ,KC_PAST ,SE_QUOT ,
     _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_P0   ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,_______ ,
     KC_NLCK ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_P0   ,KC_PDOT ,KC_PPLS ,_______
 ),
