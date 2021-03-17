@@ -26,14 +26,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MASTER_RIGHT
 // #define EE_HANDS
 
-#undef RGBLED_NUM
+/*#undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 14
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
+*/
 
 #define AUTO_SHIFT_TIMEOUT 105
 #define NO_AUTO_SHIFT_SPECIAL
-#define TAPPING_TERM 140
+#define TAPPING_TERM 125
 

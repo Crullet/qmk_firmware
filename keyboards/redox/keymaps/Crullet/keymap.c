@@ -8,22 +8,23 @@
 #define _QWERTY 0
 #define _SYMB 1
 #define _NUM 2
-#define _ADJUST 3
-#define _BL 4
+#define _NAV 3
+#define _FN 4
+#define _MOUSE 5
+#define _MEDIA 6
+#define _ADJUST 7
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   SYMB,
   NUM,
-  ADJUST,
-  BL,
+  NAV,
+  FN,
+  MOUSE,
+  MEDIA,
+  ADJUST
 };
-enum custom_macros{
-  M_QUOT = SAFE_RANGE,
-  M_DQUO,
-  M_GRV,
-  M_TILD,
-};
+
 typedef struct {
   bool is_press_action;
   int state;
@@ -43,6 +44,7 @@ enum {
 enum {
   L_BR = 0,
   R_BR = 1,
+  S_CAP = 2,
   SOME_OTHER_DANCE
 };
 
@@ -68,214 +70,231 @@ void R_reset (qk_tap_dance_state_t *state, void *user_data);
 #define WIN_DSK LGUI(KC_D)
 
 // Layer Navigation specific keys
-#define ADJ_ENT LT(_ADJUST, KC_ENT) //Enter and settings when held
-
-#define SYM_END LT(_SYMB, KC_END)
-#define SYM_SPC LT(_SYMB, KC_SPC)
-
-#define SFT_DEL SFT_T(KC_DEL)
-#define SFT_HOM SFT_T(KC_HOME)
-
+#define MED_ESC LT(_MEDIA, KC_ESC)
 #define NUM_BSP LT(_NUM, KC_BSPC)
+#define FN_DEL  LT(_FN, KC_DEL)
+#define NAV_ENT LT(_NAV, KC_ENT)
+#define SYM_SPC LT(_SYMB, KC_SPC)
+#define MOU_TAB LT(_MOUSE, KC_TAB)
 
-//Game specific bindings
-#define Bl_RUN SFT_T(KC_LCTL)
+// Homerow mods
+#define ALT_S  LALT_T(KC_S)
+#define WIN_A  LGUI_T(KC_A)
+#define CTL_D  LCTL_T(KC_D)
+#define SFT_F  LSFT_T(KC_F)
+#define ALTG_X ALTGR_T(KC_X)
+#define ALT_L  LALT_T(KC_L)
+#define WIN_OE LGUI_T(SE_OSLH)
+#define CTL_K  LCTL_T(KC_K)
+#define SFT_J  LSFT_T(KC_J)
+#define ALTG_D ALTGR_T(KC_DOT)
 
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) { //Macros
-  switch (keycode) {
-    case M_QUOT:
-      if (record->event.pressed) {
-        // when keycode is pressed
-        register_code(KC_QUOT);
-      } else {
-        // when keycode is released
-        unregister_code(KC_QUOT);
-        register_code(KC_SPC);
-      clear_keyboard();
-      }
-      break;
-      case M_DQUO:
-      if (record->event.pressed) {
-        // when keycode is pressed
-        register_code(KC_LSFT);register_code(KC_QUOT);
-
-      } else {
-        // when keycode is released
-        unregister_code(KC_LSFT);unregister_code(KC_QUOT);
-        register_code(KC_SPC);
-        clear_keyboard();
-      }
-      break;
-       case M_GRV:
-      if (record->event.pressed) {
-        // when keycode is pressed
-        register_code(KC_LSFT);register_code(KC_GRV);
-
-      } else {
-        // when keycode is released
-        unregister_code(KC_LSFT);unregister_code(KC_GRV);
-        register_code(KC_SPC);
-        clear_keyboard();
-      }
-      break;
-
-    case M_TILD:
-      if (record->event.pressed) {
-        // when keycode is pressed
-        register_code(KC_LSFT);register_code(KC_GRV);
-
-      } else {
-        // when keycode is released
-        unregister_code(KC_LSFT);unregister_code(KC_GRV);
-        register_code(KC_SPC);
-        clear_keyboard();
-      }
-      break;
-
-
-  }
-  return true;
-};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { //Keyboard Layouts
 	[_QWERTY] = LAYOUT(
 /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-   Esc       1         2       3        4        5                                                    6        7       8         9       0      Desktop
+|  Esc       1         2       3        4        5                                                    6        7       8         9       0      Desktop
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-   Tab       Q         W       E        R        T                                                    Y        U       I         O       P        Å
+|  Tab       Q         W       E        R        T                                                    Y        U       I         O       P        Å
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-   Ctrl      A         S       D        F        G      <{[(                                )]}>      H        J       K         L       Ö        Ä
+|  Ctrl      A         S       D        F        G      <{[(                                )]}>      H        J       K         L       Ö        Ä
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-   Shift     Z         X       C        V        B                                  Vol+    Vol-      N        M       ,         .       -         /
+|  Shift     Z         X       C        V        B                                  Vol+    Vol-      N        M       ,         .       -         /
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-             Win               Alt          Home       Backspace  Del             Enter    Space         End          Left      Down     Up      Right
+|            Win               Alt          Esc        Backspace  Del             Enter    Space         Tab           Left      Down     Up      Right
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	  KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,WIN_DSK ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	  KC_TAB   ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,SE_GRV                            ,SE_APOS ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,SE_AA   ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    KC_LCTL  ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,TD(L_BR)                          ,TD(R_BR),KC_H    ,KC_J    ,KC_K    ,KC_L    ,SE_OSLH ,SE_AE   ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	  KC_LSFT  ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLU ,KC_VOLD ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,SE_MINS ,SE_SLSH ,
-  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-	  XXXXXXX  ,KC_LGUI ,XXXXXXX ,KC_LALT      ,SFT_HOM     ,NUM_BSP ,SFT_DEL         ,ADJ_ENT ,SYM_SPC     ,ALT_END      ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
-  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,WIN_DSK ,
+  KC_TAB   ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,SE_GRV                            ,SE_APOS ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,SE_AA   ,
+  KC_LCTL  ,WIN_A   ,ALT_S   ,CTL_D   ,SFT_F   ,KC_G    ,TD(L_BR)                          ,TD(R_BR),KC_H    ,SFT_J   ,CTL_K   ,ALT_L   ,WIN_OE  ,SE_AE   ,
+  TD(S_CAP),KC_Z    ,ALTG_X  ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLU ,KC_VOLD ,KC_N    ,KC_M    ,KC_COMM ,ALTG_D  ,SE_MINS ,SE_SLSH ,
+  XXXXXXX  ,KC_LGUI ,XXXXXXX ,KC_LALT      ,MED_ESC     ,NUM_BSP ,FN_DEL          ,NAV_ENT ,SYM_SPC     ,MOU_TAB      ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
+
 	),
 
 	[_SYMB] = LAYOUT(
 /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-            F1       F2       F3       F4       F5                                                   F6       F7       F8       F9       F10     F11
+|
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                     Jmp L     up      Jmp R                                                           `       &        %                         F12
+|             ?       @        £         $        €                                                    ^        {       [        ]        }         \     SWE AltGr numrow
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                     Left     Down     Right                                                           "       ?        !        @        #
+|             !       "        #         ¤        %                                                    &        /       (        )        =         "     SWE shift numrow
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                                                                                                      '        ~       ;        :        =         \
+|              §      |        ¨         `        ´                                                    '        "       <        >         _
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-                                                                                                                      home    PageDown PageUp    end
+|
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    _______  ,KC_EXLM ,SE_AT   ,_______ ,_______ ,KC_PERC                                            ,_______ ,_______ ,_______ ,_______ ,_______ ,_______	,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    _______  ,XXXXXXX ,JMP_LFT ,KC_UP   ,JMP_RGT ,XXXXXXX ,XXXXXXX                           ,_______ ,SE_GRV  ,SE_AMPR ,KC_PERC ,XXXXXXX ,XXXXXXX ,KC_F12  ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  ,XXXXXXX ,KC_LEFT ,KC_DOWN ,KC_RGHT ,XXXXXXX ,XXXXXXX                           ,_______ ,SE_QUO2 ,SE_QUES ,KC_EXLM ,SE_AT   ,KC_HASH ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,_______         ,_______ ,_______ ,SE_APOS ,SE_TILD ,SE_SCLN ,SE_COLN ,SE_EQL  ,SE_BSLS ,
-  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    _______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END
-  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+   _______ ,_______ ,_______ ,_______ ,_______ ,_______                                             ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+   _______ ,SE_QUES ,SE_AT   ,SE_PND  ,SE_DLR  ,SE_EURO ,_______                           ,_______ ,SE_CIRC ,SE_LCBR ,SE_LBRC ,SE_RBRC ,SE_RCBR ,SE_BSLS ,
+   _______ ,SE_EXLM ,SE_DQUO ,SE_HASH ,SE_CURR ,SE_PERC ,_______                           ,_______ ,SE_AMPR ,SE_SLSH ,SE_LPRN ,SE_RPRN ,SE_EQL  ,SE_DQUO ,
+   _______ ,SE_SECT ,SE_CIRC ,SE_DIAE ,SE_GRV  ,SE_ACUT ,_______ ,_______         ,_______ ,_______ ,SE_QUOT ,SE_DQUO ,SE_LABK ,SE_RABK ,SE_UNDS ,_______ ,
+   _______ ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,_______ ,_______ ,_______ ,_______
 	),
 
 	[_NUM] = LAYOUT(
   /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-             F1       F2       F3       F4       F5                                                   F6       F7       F8       F9       F10   Num Lock
+|
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                                                          F11                                F12               7        8        9        /
+|                                                                                                              7        8        9        /
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                                                                                                               4        5        6        *
+|                                                                                                      \       4        5        6        *
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-                                                                                                               1        2        3        -     NumEnter
+|                                                                                                              1        2        3        +     NumEnter
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-                                                                                                                        0                 +
+|                                                                                                                       0
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    _______  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5                                               ,KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_NLCK	,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,KC_F11                           ,KC_F12   ,XXXXXXX ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PSLS ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,XXXXXXX ,KC_P4   ,KC_P5   ,KC_P6    ,KC_PAST ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-	_______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______         ,_______ ,XXXXXXX ,XXXXXXX ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,KC_PENT ,
-  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    _______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,KC_P0   ,_______ ,KC_PPLS ,KC_PSLS
-  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+  _______  ,_______ ,_______ ,_______ ,_______ ,_______                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX,
+  _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,XXXXXXX ,KC_7    ,KC_8    ,KC_9    ,KC_PSLS ,XXXXXXX ,
+  _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,SE_BSLS ,KC_4    ,KC_5    ,KC_6    ,KC_PAST ,XXXXXXX ,
+  _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_1    ,KC_2    ,KC_3    ,KC_PPLS ,XXXXXXX ,
+  _______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,XXXXXXX ,KC_P0       ,XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+
 	),
 
-	[_ADJUST] = LAYOUT(
+	[_FN] = LAYOUT(
   /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-
+|
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-
+|                                                                                                              F7       F8       F9      F12
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-
+|                                                                                                              F4       F5       F6      F11
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-
+|                                                                                                              F1       F2       F3      F10
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-
+|
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-  	RESET    ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,TG(_BL) ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    XXXXXXX  ,XXXXXXX ,XXXXXXX ,RGB_TOG ,XXXXXXX ,XXXXXXX ,XXXXXXX                           ,KC_ASTG ,KC_ASUP ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    KC_CAPS  ,RGB_MOD ,RGB_HUI ,RGB_SAI ,RGB_VAI ,XXXXXXX ,XXXXXXX                           ,KC_ASRP ,KC_ASDN ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    XXXXXXX  ,RGB_RMOD,RGB_HUD ,RGB_SAD ,RGB_VAD ,XXXXXXX ,XXXXXXX ,XXXXXXX         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
-  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+_______  ,_______ ,_______ ,_______ ,_______ ,_______                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+_______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,XXXXXXX ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F12  ,XXXXXXX ,
+_______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,XXXXXXX ,KC_F4   ,KC_F5   ,KC_F6   ,KC_F11  ,XXXXXXX ,
+_______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F10  ,XXXXXXX ,
+_______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,XXXXXXX ,XXXXXXX     ,XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+
 	),
 
-	[_BL] = LAYOUT(
+	[_NAV] = LAYOUT(
   /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-  Esc        1        2       3         4        5                                                                                             Turn of layer
+|
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-  Tab                 Q        W       E         R       T
+|            Home    PgDn     PgUp     End
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-  Shift     G         A        S       D         F       G
+|            Left    Down     Up       Right
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-  Ctrl                Z        X       C         V       [         ]
+|            Undo    Cut      Copy     Paste    Redo
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-            M         I        L             V         Sprint    Jump
+|
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
-  */
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-  	KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,TG(_BL),
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    KC_TAB   ,XXXXXXX ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T                              ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    KC_LCTL  ,KC_G    ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G                              ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-    KC_LSFT  ,XXXXXXX ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_LBRC ,KC_RBRC         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
-  //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-    XXXXXXX  ,KC_M    ,KC_I    ,KC_L         ,KC_V        ,Bl_RUN  ,KC_SPC          ,XXXXXXX ,XXXXXXX     ,XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
-  //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+*/
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END  ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RIGHT,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,C(KC_Z) ,C(KC_X) ,C(KC_C) ,C(KC_V) ,C(KC_Y) ,XXXXXXX ,XXXXXXX         ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,XXXXXXX     ,XXXXXXX ,XXXXXXX         ,_______ ,_______     ,_______      ,_______ ,_______ ,_______ ,_______
 
 	),
+
+	[_MOUSE] = LAYOUT(
+  /*
+┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|          ScrLeft  ScrDown  ScrUp    ScrRight
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|          MouseL   MouseD   MouseU   MouseR
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|          Prev     VolDown  VolUp    Next   Play/Pause
+├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+|                                          Mouse2       Mouse3   Mouse1
+└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+*/
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_WH_L ,KC_WH_D ,KC_WH_U ,KC_WH_R ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_MS_L ,KC_WH_D ,KC_MS_D ,KC_MS_R ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_MPRV ,KC_VOLD ,KC_VOLU ,KC_MNXT ,KC_MPLY ,XXXXXXX ,XXXXXXX         ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,KC_BTN2     ,KC_BTN3 ,KC_BTN1         ,_______ ,_______     ,_______      ,_______ ,_______ ,_______ ,_______
+
+	),
+
+	[_Media] = LAYOUT(
+  /*
+┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|          Prev     VolDown  VolUp    Next   Play/Pause
+├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+|
+└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+*/
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_MPRV ,KC_VOLD ,KC_VOLU ,KC_MNXT ,KC_MPLY ,XXXXXXX ,XXXXXXX         ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,XXXXXXX     ,XXXXXXX ,XXXXXXX         ,_______ ,_______     ,_______      ,_______ ,_______ ,_______ ,_______
+
+	),
+
+    	[_ADJUST] = LAYOUT(
+  /*
+┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|
+├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+|
+└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+*/
+RESET    ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,RGB_TOG ,XXXXXXX ,XXXXXXX ,XXXXXXX                           ,KC_ASTG ,KC_ASUP ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+KC_CAPS  ,RGB_MOD ,RGB_HUI ,RGB_SAI ,RGB_VAI ,XXXXXXX ,XXXXXXX                           ,KC_ASRP ,KC_ASDN ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+XXXXXXX  ,RGB_RMOD,RGB_HUD ,RGB_SAD ,RGB_VAD ,XXXXXXX ,XXXXXXX ,XXXXXXX         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,_______     ,_______ ,_______         ,_______ ,_______     ,_______      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+
+	),
+
+
   };
+
+  bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+        case LOWER:
+          if (record->event.pressed) {
+            layer_on(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          //return false; //removed to enable layer tap
+          break;
+        case RAISE:
+          if (record->event.pressed) {
+            layer_on(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          } else {
+            layer_off(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          //return false; //removed to enable layer tap
+          break;
+      }
+    return true;
+};
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
  *
@@ -387,8 +406,9 @@ void R_reset (qk_tap_dance_state_t *state, void *user_data) {
   }
   Rtap_state.state = 0;
 }
-
+  // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   [L_BR]     = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL,L_finished, L_reset, 200),
-  [R_BR]     = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL,R_finished, R_reset, 200)
+  [R_BR]     = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL,R_finished, R_reset, 200),
+  [S_CAP]    = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS)     // Tap once for Shift, twice for Caps Lock
 };
