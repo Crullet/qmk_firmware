@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Select hand configuration */
 #define MASTER_LEFT
 //#define MASTER_RIGHT
-// #define EE_HANDS
+#define EE_HANDS
 
 /*#undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
@@ -36,5 +36,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define AUTO_SHIFT_TIMEOUT 105
 #define NO_AUTO_SHIFT_SPECIAL
-#define TAPPING_TERM 125
+#define TAPPING_TERM 220
 

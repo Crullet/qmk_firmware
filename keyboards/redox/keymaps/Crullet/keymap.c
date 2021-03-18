@@ -82,12 +82,12 @@ void R_reset (qk_tap_dance_state_t *state, void *user_data);
 #define WIN_A  LGUI_T(KC_A)
 #define CTL_D  LCTL_T(KC_D)
 #define SFT_F  LSFT_T(KC_F)
-#define ALTG_X ALTGR_T(KC_X)
+#define ALG_X ALGR_T(KC_X)
 #define ALT_L  LALT_T(KC_L)
 #define WIN_OE LGUI_T(SE_OSLH)
 #define CTL_K  LCTL_T(KC_K)
 #define SFT_J  LSFT_T(KC_J)
-#define ALTG_D ALTGR_T(KC_DOT)
+#define ALG_D ALGR_T(KC_DOT)
 
 
 
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { //Keyboard Layout
   KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,WIN_DSK ,
   KC_TAB   ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,SE_GRV                            ,SE_APOS ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,SE_AA   ,
   KC_LCTL  ,WIN_A   ,ALT_S   ,CTL_D   ,SFT_F   ,KC_G    ,TD(L_BR)                          ,TD(R_BR),KC_H    ,SFT_J   ,CTL_K   ,ALT_L   ,WIN_OE  ,SE_AE   ,
-  TD(S_CAP),KC_Z    ,ALTG_X  ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLU ,KC_VOLD ,KC_N    ,KC_M    ,KC_COMM ,ALTG_D  ,SE_MINS ,SE_SLSH ,
+  TD(S_CAP),KC_Z    ,ALG_X  ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLU ,KC_VOLD ,KC_N    ,KC_M    ,KC_COMM ,ALG_D  ,SE_MINS ,SE_SLSH ,
   XXXXXXX  ,KC_LGUI ,XXXXXXX ,KC_LALT      ,MED_ESC     ,NUM_BSP ,FN_DEL          ,NAV_ENT ,SYM_SPC     ,MOU_TAB      ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
 
 	),
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { //Keyboard Layout
   _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,XXXXXXX ,KC_7    ,KC_8    ,KC_9    ,KC_PSLS ,XXXXXXX ,
   _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______                           ,XXXXXXX ,SE_BSLS ,KC_4    ,KC_5    ,KC_6    ,KC_PAST ,XXXXXXX ,
   _______  ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______         ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_1    ,KC_2    ,KC_3    ,KC_PPLS ,XXXXXXX ,
-  _______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,XXXXXXX ,KC_P0       ,XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+  _______  ,_______ ,_______ ,_______      ,_______     ,_______ ,_______         ,XXXXXXX ,KC_0        ,XXXXXXX      ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
 
 	),
 
@@ -223,7 +223,7 @@ XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,KC_BTN2     ,KC_BTN3 ,KC_BTN1         
 
 	),
 
-	[_Media] = LAYOUT(
+	[_MEDIA] = LAYOUT(
   /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
 |
@@ -272,23 +272,23 @@ XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,_______     ,_______ ,_______         
 
   bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case LOWER:
+        case SYM_SPC:
           if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(_SYMB);
+            update_tri_layer(_SYMB, _NUM, _ADJUST);
           } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(_SYMB);
+            update_tri_layer(_SYMB, _NUM, _ADJUST);
           }
           //return false; //removed to enable layer tap
           break;
-        case RAISE:
+        case NUM_BSP:
           if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(_NUM);
+            update_tri_layer(_SYMB, _NUM, _ADJUST);
           } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(_NUM);
+            update_tri_layer(_SYMB, _NUM, _ADJUST);
           }
           //return false; //removed to enable layer tap
           break;
