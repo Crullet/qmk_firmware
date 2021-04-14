@@ -78,16 +78,16 @@ void R_reset (qk_tap_dance_state_t *state, void *user_data);
 #define MOU_TAB LT(_MOUSE, KC_TAB)
 
 // Homerow mods
-#define ALT_S  LALT_T(KC_S)
-#define WIN_A  LGUI_T(KC_A)
-#define CTL_D  LCTL_T(KC_D)
-#define SFT_F  LSFT_T(KC_F)
-#define ALG_X ALGR_T(KC_X)
-#define ALT_L  LALT_T(KC_L)
-#define WIN_OE LGUI_T(SE_OSLH)
-#define CTL_K  LCTL_T(KC_K)
-#define SFT_J  LSFT_T(KC_J)
-#define ALG_D ALGR_T(KC_DOT)
+#define ALT_S   LALT_T(KC_S)
+#define WIN_Z   LGUI_T(KC_Z)
+#define CTL_D   LCTL_T(KC_D)
+#define SFT_F   LSFT_T(KC_F)
+#define ALG_X   ALGR_T(KC_X)
+#define ALT_L   LALT_T(KC_L)
+#define WIN_MIN LGUI_T(SE_MINS)
+#define CTL_K   LCTL_T(KC_K)
+#define SFT_J   LSFT_T(KC_J)
+#define ALG_D   ALGR_T(KC_DOT)
 
 
 
@@ -95,21 +95,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { //Keyboard Layout
 	[_QWERTY] = LAYOUT(
 /*
 ┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-|  Esc       1         2       3        4        5                                                    6        7       8         9       0      Desktop
+|  Esc       1         2       3        4        5                                                    6        7       8         9        0
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-|  Tab       Q         W       E        R        T                                                    Y        U       I         O       P        Å
+|  Tab       Q         W       E        R        T                                                    Y        U       I         O        P        Å
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-|  Ctrl      A         S       D        F        G      <{[(                                )]}>      H        J       K         L       Ö        Ä
+|  Ctrl      A         S       D        F        G      <{[(                                )]}>      H        J       K         L        Ö        Ä
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-|  Shift     Z         X       C        V        B                                  Vol+    Vol-      N        M       ,         .       -         /
+|  Shift     Z         X       C        V        B                                  Vol-    Vol+      N        M       ,         .        -        /
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
 |            Win               Alt          Esc        Backspace  Del             Enter    Space         Tab           Left      Down     Up      Right
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
-  KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,WIN_DSK ,
+  KC_GESC  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5                                                ,KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,KC_BSPC ,
   KC_TAB   ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,SE_GRV                            ,SE_APOS ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,SE_AA   ,
-  KC_LCTL  ,WIN_A   ,ALT_S   ,CTL_D   ,SFT_F   ,KC_G    ,TD(L_BR)                          ,TD(R_BR),KC_H    ,SFT_J   ,CTL_K   ,ALT_L   ,WIN_OE  ,SE_AE   ,
-  TD(S_CAP),KC_Z    ,ALG_X  ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLU ,KC_VOLD ,KC_N    ,KC_M    ,KC_COMM ,ALG_D  ,SE_MINS ,SE_SLSH ,
+  KC_LCTL  ,KC_A    ,ALT_S   ,CTL_D   ,SFT_F   ,KC_G    ,TD(L_BR)                          ,TD(R_BR),KC_H    ,SFT_J   ,CTL_K   ,ALT_L   ,SE_ODIA ,SE_AE   ,
+  TD(S_CAP),WIN_Z   ,ALG_X   ,KC_C    ,KC_V    ,KC_B    ,KC_VOLU ,KC_VOLD         ,KC_VOLD ,KC_VOLU ,KC_N    ,KC_M    ,KC_COMM ,ALG_D   ,WIN_MIN ,SE_SLSH ,
   XXXXXXX  ,KC_LGUI ,XXXXXXX ,KC_LALT      ,MED_ESC     ,NUM_BSP ,FN_DEL          ,NAV_ENT ,SYM_SPC     ,MOU_TAB      ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
 
 	),
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = { //Keyboard Layout
 ├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
 |                                                                                                              1        2        3        +     NumEnter
 ├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-|                                                                                                                       0
+|                                                                                            0
 └────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 */
   _______  ,_______ ,_______ ,_______ ,_______ ,_______                                             ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX,
@@ -217,7 +217,7 @@ XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,XXXXXXX     ,XXXXXXX ,XXXXXXX         
 */
 XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX                                             ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
 XXXXXXX  ,KC_WH_L ,KC_WH_D ,KC_WH_U ,KC_WH_R ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
-XXXXXXX  ,KC_MS_L ,KC_WH_D ,KC_MS_D ,KC_MS_R ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+XXXXXXX  ,KC_MS_L ,KC_MS_D ,KC_MS_U ,KC_MS_R ,XXXXXXX ,XXXXXXX                           ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
 XXXXXXX  ,KC_MPRV ,KC_VOLD ,KC_VOLU ,KC_MNXT ,KC_MPLY ,XXXXXXX ,XXXXXXX         ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
 XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX      ,KC_BTN2     ,KC_BTN3 ,KC_BTN1         ,_______ ,_______     ,_______      ,_______ ,_______ ,_______ ,_______
 

@@ -34,7 +34,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 8
 */
 
-#define AUTO_SHIFT_TIMEOUT 105
-#define NO_AUTO_SHIFT_SPECIAL
-#define TAPPING_TERM 220
+// default but used in macros
+#define TAPPING_TERM 250
 
+// Prevent normal rollover on alphas from accidentaly triggering mods.
+#define IGNORE_MOD_TAP_INTERUPPT
+#define PERMISSIVE_HOLD
+
+//Enable rapid switch from tap to hold, disables double tap hold auto-repeat
+//#define TAPPING_FORCE_HOLD
+
+// Auto Shift
+#define AUTO_SHIFT_TIMEOUT TAPPING_TERM
+#define NO_AUTO_SHIFT_SPECIAL
+
+//Mouse Key speed and acceleration
+#undef  MOUDEKEY_DELAY
+#define MOUSEKEY_DELAY 0
+#undef  MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL 16
+#undef  MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELA
+#undef  MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED 16
+#undef  MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX 64
